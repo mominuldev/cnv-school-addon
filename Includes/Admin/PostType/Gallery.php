@@ -40,7 +40,7 @@ class Gallery {
 	 * @var string
 	 */
 
-	private $post_type_icon = 'dashicons-calendar-alt';
+	private $post_type_icon = 'dashicons-format-gallery';
 
 	/**
 	 * Post Type Taxonomy

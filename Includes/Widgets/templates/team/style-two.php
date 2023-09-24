@@ -19,6 +19,12 @@ if ( $settings['image']['url'] ): ?>
 				</h6>
 			<?php endif; ?>
 
+			<?php if ( $settings['mobile_number'] ): ?>
+                <p class="cnv-team__number">
+					<?php printf( '%s', $settings['mobile_number'] ); ?>
+                </p>
+			<?php endif; ?>
+
 			<?php if ( ! empty( $settings['social_icons'] )  ) : ?>
 
 				<ul class="cnv-team__social">

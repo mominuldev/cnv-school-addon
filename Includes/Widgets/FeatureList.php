@@ -24,7 +24,7 @@ class FeatureList extends Widget_Base
 	 */
 	public function get_name()
 	{
-		return 'rbt-feature-list';
+		return 'cnv-feature-list';
 	}
 
 
@@ -142,7 +142,7 @@ class FeatureList extends Widget_Base
 				'label'     => __('Color', 'cnv-school-addon'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rbt-feature__title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -152,7 +152,7 @@ class FeatureList extends Widget_Base
 			[
 				'name'     => 'feature_typography',
 				'label'    => __('Typography', 'cnv-school-addon'),
-				'selector' => '{{WRAPPER}} .rbt-feature__title',
+				'selector' => '{{WRAPPER}} .cnv-feature__title',
 			]
 		);
 
@@ -170,7 +170,7 @@ class FeatureList extends Widget_Base
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-feature__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-feature__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -191,7 +191,7 @@ class FeatureList extends Widget_Base
 				'label'     => __('Color', 'cnv-school-addon'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rbt-feature__content' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__content' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -201,7 +201,7 @@ class FeatureList extends Widget_Base
 			[
 				'name'     => 'ans_typography',
 				'label'    => __('Typography', 'cnv-school-addon'),
-				'selector' => '{{WRAPPER}} .rbt-feature__content',
+				'selector' => '{{WRAPPER}} .cnv-feature__content',
 			]
 		);
 
@@ -222,7 +222,7 @@ class FeatureList extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-feature__item:not(:last-child)' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-feature__item:not(:last-child)' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -234,7 +234,7 @@ class FeatureList extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-feature__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-feature__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -245,7 +245,7 @@ class FeatureList extends Widget_Base
 				'label'     => __('Background Color', 'cnv-school-addon'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rbt-feature__item' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__item' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -257,7 +257,7 @@ class FeatureList extends Widget_Base
 				'label'     => __('Hover Background Color', 'cnv-school-addon'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rbt-feature__item:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__item:hover' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -268,8 +268,8 @@ class FeatureList extends Widget_Base
 				'label'     => __('Icon Color', 'cnv-school-addon'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rbt-feature__item .rbt-feature__icon i' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .rbt-feature__item .rbt-feature__icon svg path' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__item .cnv-feature__icon i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__item .cnv-feature__icon svg path' => 'fill: {{VALUE}}',
 				],
 			]
 		);
@@ -281,8 +281,8 @@ class FeatureList extends Widget_Base
 				'label'     => __('Hover Icon Color', 'cnv-school-addon'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rbt-feature__item:hover .rbt-feature__icon i' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .rbt-feature__item:hover .rbt-feature__icon svg path' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__item:hover .cnv-feature__icon i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-feature__item:hover .cnv-feature__icon svg path' => 'fill: {{VALUE}}',
 				],
 			]
 		);
@@ -292,7 +292,7 @@ class FeatureList extends Widget_Base
 			[
 				'name'     => 'feature_border',
 				'label'    => __('Border', 'cnv-school-addon'),
-				'selector' => '{{WRAPPER}} .rbt-feature__item',
+				'selector' => '{{WRAPPER}} .cnv-feature__item',
 			]
 		);
 
@@ -303,7 +303,7 @@ class FeatureList extends Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-feature__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-feature__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -312,7 +312,7 @@ class FeatureList extends Widget_Base
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'feature_box_shadow',
-				'selector' => '{{WRAPPER}} .rbt-feature__item',
+				'selector' => '{{WRAPPER}} .cnv-feature__item',
 			]
 		);
 
@@ -326,28 +326,28 @@ class FeatureList extends Widget_Base
 
 
 		if ($settings['feature_lists']) { ?>
-			<div class="rbt-feature">
+			<div class="cnv-feature">
 				<?php foreach ($settings['feature_lists'] as $item) { ?>
-					<div class="rbt-feature__item">
+					<div class="cnv-feature__item">
 						<?php if (!empty($item['icon'])) : ?>
-							<div class="rbt-feature__icon">
+							<div class="cnv-feature__icon">
 								<?php \Elementor\Icons_Manager::render_icon($item['icon'], ['aria-hidden' => 'true']); ?>
 							</div>
 						<?php endif; ?>
 
-						<div class="rbt-feature__content">
+						<div class="cnv-feature__content">
 							<?php if (!empty($item['feature_title'])) : ?>
-								<h4 class="rbt-feature__title"><?php echo $item['feature_title']; ?></h4>
+								<h4 class="cnv-feature__title"><?php echo $item['feature_title']; ?></h4>
 							<?php endif; ?>
 
 							<?php if (!empty($item['description'])) : ?>
-								<p class="rbt-feature__content"><?php echo $item['description']; ?></p>
+								<p class="cnv-feature__content"><?php echo $item['description']; ?></p>
 							<?php endif; ?>
 						</div>
 					</div>
 				<?php } ?>
 			</div>
-			<!-- /.rbt-feature -->
+			<!-- /.cnv-feature -->
 			<?php
 
 		}

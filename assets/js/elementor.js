@@ -9,14 +9,14 @@
 				'cnv-banner-slider.default': CNV.BannerSlider,
 				'cnv-hero-static.default': CNV.Hero,
 				'cnv-project-slider.default': CNV.Slider,
-				'rbt-image-carousel.default': CNV.ImageCarousel,
+				'cnv-image-carousel.default': CNV.ImageCarousel,
 				'cnv-blog-slider.default': CNV.BlogSlider,
 				'cnv-dynamic-tabs.default': CNV.DynamicTabs,
-				'rbt-feature-list-tabs.default': CNV.Tabs,
+				'cnv-feature-list-tabs.default': CNV.Tabs,
 				'cnv-testimonial.default': CNV.Testimonial,
 				'cnv-testimonial-creative.default': CNV.TestimonialCreative,
 				'cnv-logo-carousel.default': CNV.Logo,
-				'cnv-coming-soon.default': CNV.Counting,
+				'cnv-counter-list.default': CNV.CountUp,
 
 			};
 			$.each(widgets, function (widget, callback) {
@@ -152,8 +152,7 @@
 			// 	duration: 1.5
 			// }, '-=5');
 		},
-
-
+		
 		DynamicTabs: function ($scope) {
 			var tabnav = $scope.find('#cnv-dynamic-tabs-nav li');
 
@@ -194,17 +193,17 @@
 		},
 
 		Tabs: function ($scope) {
-			var tabnav = $scope.find('.rbt-feature .rbt-feature__item');
+			var tabnav = $scope.find('.cnv-feature .cnv-feature__item');
 
-			$('.rbt-feature .rbt-feature__item:nth-child(1)').addClass('active');
-			$('.rbt-feature__image-wrapper .rbt-feature__image').hide();
-			$('.rbt-feature__image-wrapper .rbt-feature__image:nth-child(1)').show();
+			$('.cnv-feature .cnv-feature__item:nth-child(1)').addClass('active');
+			$('.cnv-feature__image-wrapper .cnv-feature__image').hide();
+			$('.cnv-feature__image-wrapper .cnv-feature__image:nth-child(1)').show();
 
 			// Tab Click function
 			tabnav.on('click', function () {
-				$('.rbt-feature .rbt-feature__item').removeClass('active');
+				$('.cnv-feature .cnv-feature__item').removeClass('active');
 				$(this).addClass('active');
-				$('.rbt-feature__image-wrapper .rbt-feature__image').hide();
+				$('.cnv-feature__image-wrapper .cnv-feature__image').hide();
 
 				var activeTab = $(this).find('a').attr('href');
 				$(activeTab).fadeIn(600);
@@ -252,9 +251,9 @@
 		},
 
 		ImageCarousel: function ($scope) {
-			const imageSlider = document.querySelector("..rbt-image-slider");
+			const imageSlider = document.querySelector("..cnv-image-slider");
 
-			var swiper = new Swiper(".rbt-image-slider", {
+			var swiper = new Swiper(".cnv-image-slider", {
 				autoplay: {
 					delay: 5000,
 				},
@@ -350,7 +349,7 @@
 
 		TestimonialCreative: function ($scope) {
 
-			var slideInit = $scope.find('.rbt-creative-testimonial');
+			var slideInit = $scope.find('.cnv-creative-testimonial');
 			var layout = slideInit.data('testimonial');
 
 			if(layout == 'three'){
@@ -421,7 +420,7 @@
 			var swiperthumb = new Swiper(".testimonial-thumb", options);
 
 			// Testimonial-3
-			var swipertestlist = new Swiper(".rbt-creative-testimonial", {
+			var swipertestlist = new Swiper(".cnv-creative-testimonial", {
 				loop: true,
 				spaceBetween: 10,
 				speed: 1000,
@@ -462,6 +461,36 @@
 
 			});
 		},
+
+		CountUp: function ($scope) {
+
+			var counteEl = $scope.find('[data-counter]');
+
+			var options = {
+				useEasing: true,
+				useGrouping: true,
+				separator: ',',
+				decimal: '.',
+				prefix: '',
+				suffix: ''
+			};
+
+			// var counteEl = $('[data-counter]');
+
+			if (counteEl) {
+				counteEl.each(function () {
+					var val = $(this).data('counter');
+
+					var countup = new CountUp(this, 0, val, 0, 2.5, options);
+					$(this).appear(function () {
+						countup.start();
+					}, {
+						accX: 0,
+						accY: 0
+					})
+				});
+			}
+		}
 
 	};
 	$(window).on('elementor/frontend/init', CNV.init);

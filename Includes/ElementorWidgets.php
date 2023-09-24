@@ -54,7 +54,7 @@ class ElementorWidgets {
 
 	public function register_categories( $elements_manager ) {
 		$elements_manager->add_category(
-			'rbt-elements',
+			'cnv-elements',
 			[
 				'title' => __( 'CNV Elements', 'cnv-school-addon' ),
 				'icon' => 'fa fa-plug',
@@ -128,11 +128,6 @@ class ElementorWidgets {
 		wp_register_script( 'isotope', CNV_PLUGIN_SCRIPTS . '/isotope.pkgd.min.js', array( 'jquery' ), CNV_PLUGIN_VERSION, true );
 		wp_register_script( 'parallax', CNV_PLUGIN_SCRIPTS . '/parallax.min.js', array( 'jquery' ), CNV_PLUGIN_VERSION, true );
 		wp_enqueue_script( 'marquee', CNV_PLUGIN_SCRIPTS . '/jquery.marquee.js', array('jquery'), CNV_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'gsap', CNV_PLUGIN_SCRIPTS . '/gsap.min.js', array(), CNV_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'splittext', CNV_PLUGIN_SCRIPTS . '/SplitText.min.js', array(), CNV_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'ScrollSmoother', CNV_PLUGIN_SCRIPTS . '/ScrollSmoother.min.js', array(), CNV_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'ScrollTrigger', CNV_PLUGIN_SCRIPTS . '/ScrollTrigger.min.js', array(), CNV_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'tilts', CNV_PLUGIN_SCRIPTS . '/jquery.tilt.js', array('jquery'), CNV_PLUGIN_VERSION, true );
 	}
 
 	/**

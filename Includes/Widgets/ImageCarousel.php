@@ -22,7 +22,7 @@ class ImageCarousel extends Widget_Base {
 	 * @access public
 	 */
 	public function get_name() {
-		return 'rbt-image-carousel';
+		return 'cnv-image-carousel';
 	}
 
 	/**
@@ -270,7 +270,7 @@ class ImageCarousel extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
-					'{{WRAPPER}} .rbt-image-carousel-title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .cnv-image-carousel-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -281,7 +281,7 @@ class ImageCarousel extends Widget_Base {
 			[
 				'name'     => 'title_typography',
 				'label'    => __( 'Title Typography', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-image-carousel-title',
+				'selector' => '{{WRAPPER}} .cnv-image-carousel-title',
 			]
 		);
 
@@ -313,7 +313,7 @@ class ImageCarousel extends Widget_Base {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-image-carousel-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-image-carousel-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -394,9 +394,9 @@ class ImageCarousel extends Widget_Base {
 
 		$this->add_render_attribute( 'container', 'class', [
 			'swiper-container',
-			'rbt-image-slider',
+			'cnv-image-slider',
 		] );
-		$this->add_render_attribute( 'wrapper', 'class', 'rbt-image-carousel-wrapper' );
+		$this->add_render_attribute( 'wrapper', 'class', 'cnv-image-carousel-wrapper' );
 
 
 		$slider_options = $this->get_slider_options( $settings );
@@ -421,9 +421,9 @@ class ImageCarousel extends Widget_Base {
 							<div class="swiper-slide">
 								<div class="row">
 									<div class="col-lg-3 align-self-end">
-										<div class="rbt-slider-image">
+										<div class="cnv-slider-image">
 											<?php if( ! empty( $item['title-one'] )) : ?>
-												<h3 class="rbt-image-carousel-title"><?php echo esc_html( $item['title-one'] ); ?></h3>
+												<h3 class="cnv-image-carousel-title"><?php echo esc_html( $item['title-one'] ); ?></h3>
 											<?php endif; ?>
 
 											<?php if ( ! empty( $item['image-one']['url'] ) ): ?>
@@ -433,9 +433,9 @@ class ImageCarousel extends Widget_Base {
 									</div>
 
 									<div class="col-lg-6">
-										<div class="rbt-slider-image sbt-slider-image--center">
+										<div class="cnv-slider-image sbt-slider-image--center">
 											<?php if( ! empty( $item['title-two'] )) : ?>
-												<h3 class="rbt-image-carousel-title"><?php echo esc_html( $item['title-two'] ); ?></h3>
+												<h3 class="cnv-image-carousel-title"><?php echo esc_html( $item['title-two'] ); ?></h3>
 											<?php endif; ?>
 
 											<?php if ( ! empty( $item['image-two']['url'] ) ): ?>
@@ -445,9 +445,9 @@ class ImageCarousel extends Widget_Base {
 									</div>
 
 									<div class="col-lg-3">
-										<div class="rbt-slider-image">
+										<div class="cnv-slider-image">
 											<?php if( ! empty( $item['title-three'] )) : ?>
-												<h3 class="rbt-image-carousel-title"><?php echo esc_html( $item['title-three'] ); ?></h3>
+												<h3 class="cnv-image-carousel-title"><?php echo esc_html( $item['title-three'] ); ?></h3>
 											<?php endif; ?>
 
 											<?php if ( ! empty( $item['image-three']['url']) ): ?>

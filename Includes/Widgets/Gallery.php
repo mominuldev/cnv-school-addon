@@ -2,399 +2,185 @@
 
 namespace CodeNestVentures\SchoolAddon\Widgets;
 
-use Elementor\Controls_Manager;
-use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Image_Size;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Typography;
-use Elementor\Widget_Base;
+use Elementor\{Group_Control_Image_Size,
+	Plugin,
+	Controls_Manager,
+	Group_Control_Box_Shadow,
+	Widget_Base,
+	Group_Control_Typography,
+	Repeater,
+	Utils
+};
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
+	exit;
+} // Exit if accessed directly
 
-/**
- * Elementor image gallery widget.
- *
- * Elementor widget that displays a set of images in an aligned grid.
- *
- * @since 1.0.0
- */
 class Gallery extends Widget_Base {
 
 	/**
 	 * Get widget name.
-	 *
-	 * Retrieve image gallery widget name.
-	 *
+	 * Retrieve alert widget name.
+	 * @return string Widget name.
 	 * @since 1.0.0
 	 * @access public
-	 *
-	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'cnv-image-gallery';
+		return 'cnv-gallery';
 	}
 
-	/**
-	 * Get widget title.
-	 *
-	 * Retrieve image gallery widget title.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 *
-	 * @return string Widget title.
-	 */
+
 	public function get_title() {
-		return esc_html__( 'CNV Gallery', 'cnv-school-addon' );
+		return __( 'CNV Gallery', 'cnv-school-addon' );
 	}
 
-	/**
-	 * Get widget icon.
-	 *
-	 * Retrieve image gallery widget icon.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 *
-	 * @return string Widget icon.
-	 */
 	public function get_icon() {
-		return 'eicon-gallery-grid';
+		// Icon name from the Elementor font file, as per http://dtbaker.net/web-development/creating-your-own-custom-elementor-widgets/
+		return 'eicon-photo-library';
 	}
 
 	/**
-	 * Get widget keywords.
-	 *
-	 * Retrieve the list of keywords the widget belongs to.
-	 *
-	 * @since 2.1.0
-	 * @access public
-	 *
-	 * @return array Widget keywords.
-	 */
-	public function get_keywords() {
-		return [ 'image', 'photo', 'visual', 'gallery' ];
-	}
-
-	/**
-	 * Register image gallery widget controls.
-	 *
-	 * Adds different input fields to allow the user to change and customize the widget settings.
-	 *
-	 * @since 3.1.0
-	 * @access protected
-	 */
-	protected function register_controls() {
-		$this->start_controls_section(
-			'section_gallery',
-			[
-				'label' => esc_html__( 'Image Gallery', 'cnv-school-addon' ),
-			]
-		);
-
-		$this->add_control(
-			'wp_gallery',
-			[
-				'label' => esc_html__( 'Add Images', 'cnv-school-addon' ),
-				'type' => Controls_Manager::GALLERY,
-				'show_label' => false,
-				'dynamic' => [
-					'active' => true,
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Image_Size::get_type(),
-			[
-				'name' => 'thumbnail', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
-				'exclude' => [ 'custom' ],
-				'separator' => 'none',
-			]
-		);
-
-		$gallery_columns = range( 1, 10 );
-		$gallery_columns = array_combine( $gallery_columns, $gallery_columns );
-
-		$this->add_control(
-			'gallery_columns',
-			[
-				'label' => esc_html__( 'Columns', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 4,
-				'options' => $gallery_columns,
-			]
-		);
-
-		$this->add_control(
-			'gallery_link',
-			[
-				'label' => esc_html__( 'Link', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'file',
-				'options' => [
-					'file' => esc_html__( 'Media File', 'cnv-school-addon' ),
-//					'attachment' => esc_html__( 'Attachment Page', 'cnv-school-addon' ),
-					'none' => esc_html__( 'None', 'cnv-school-addon' ),
-				],
-			]
-		);
-
-		$this->add_control(
-			'open_lightbox',
-			[
-				'label' => esc_html__( 'Lightbox', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'default',
-				'options' => [
-					'default' => esc_html__( 'Default', 'cnv-school-addon' ),
-					'yes' => esc_html__( 'Yes', 'cnv-school-addon' ),
-					'no' => esc_html__( 'No', 'cnv-school-addon' ),
-				],
-				'condition' => [
-					'gallery_link' => 'file',
-				],
-			]
-		);
-
-		$this->add_control(
-			'gallery_rand',
-			[
-				'label' => esc_html__( 'Order By', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'' => esc_html__( 'Default', 'cnv-school-addon' ),
-					'rand' => esc_html__( 'Random', 'cnv-school-addon' ),
-				],
-				'default' => '',
-			]
-		);
-
-		$this->add_control(
-			'view',
-			[
-				'label' => esc_html__( 'View', 'cnv-school-addon' ),
-				'type' => Controls_Manager::HIDDEN,
-				'default' => 'traditional',
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_gallery_images',
-			[
-				'label' => esc_html__( 'Images', 'cnv-school-addon' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'image_spacing',
-			[
-				'label' => esc_html__( 'Spacing', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'' => esc_html__( 'Default', 'cnv-school-addon' ),
-					'custom' => esc_html__( 'Custom', 'cnv-school-addon' ),
-				],
-				'prefix_class' => 'gallery-spacing-',
-				'default' => '',
-			]
-		);
-
-		$columns_margin = is_rtl() ? '0 0 -{{SIZE}}{{UNIT}} -{{SIZE}}{{UNIT}};' : '0 -{{SIZE}}{{UNIT}} -{{SIZE}}{{UNIT}} 0;';
-		$columns_padding = is_rtl() ? '0 0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};' : '0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0;';
-
-		$this->add_control(
-			'image_spacing_custom',
-			[
-				'label' => esc_html__( 'Image Spacing', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SLIDER,
-				'show_label' => false,
-				'range' => [
-					'px' => [
-						'max' => 100,
-					],
-				],
-				'default' => [
-					'size' => 15,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .gallery-item' => 'padding:' . $columns_padding,
-					'{{WRAPPER}} .gallery' => 'margin: ' . $columns_margin,
-				],
-				'condition' => [
-					'image_spacing' => 'custom',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'image_border',
-				'selector' => '{{WRAPPER}} .gallery-item img',
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_responsive_control(
-			'image_border_radius',
-			[
-				'label' => esc_html__( 'Border Radius', 'cnv-school-addon' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-				'selectors' => [
-					'{{WRAPPER}} .gallery-item img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_caption',
-			[
-				'label' => esc_html__( 'Caption', 'cnv-school-addon' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'gallery_display_caption',
-			[
-				'label' => esc_html__( 'Display', 'cnv-school-addon' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => '',
-				'options' => [
-					'' => esc_html__( 'Show', 'cnv-school-addon' ),
-					'none' => esc_html__( 'Hide', 'cnv-school-addon' ),
-				],
-				'selectors' => [
-					'{{WRAPPER}} .gallery-item .gallery-caption' => 'display: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'align',
-			[
-				'label' => esc_html__( 'Alignment', 'cnv-school-addon' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'cnv-school-addon' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'cnv-school-addon' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'cnv-school-addon' ),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__( 'Justified', 'cnv-school-addon' ),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .gallery-item .gallery-caption' => 'text-align: {{VALUE}};',
-				],
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'text_color',
-			[
-				'label' => esc_html__( 'Text Color', 'cnv-school-addon' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .gallery-item .gallery-caption' => 'color: {{VALUE}};',
-				],
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'typography',
-				'global' => [
-					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
-				],
-				'selector' => '{{WRAPPER}} .gallery-item .gallery-caption',
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
-			[
-				'name' => 'caption_shadow',
-				'selector' => '{{WRAPPER}} .gallery-item .gallery-caption',
-			]
-		);
-
-		$this->end_controls_section();
-	}
-
-	/**
-	 * Render image gallery widget output on the frontend.
-	 *
-	 * Written in PHP and used to generate the final HTML.
-	 *
+	 * Get widget categories.
+	 * Retrieve the widget categories.
+	 * @return array Widget categories.
 	 * @since 1.0.0
-	 * @access protected
+	 * @access public
 	 */
+	public function get_categories() {
+		return [ 'cnv-elements' ];
+	}
+
+	protected function register_controls() {
+
+		// Query Settings
+		// =====================
+		$this->start_controls_section( 'query_section', [
+			'label' => esc_html__( 'Query', 'cnv-school-addon' ),
+		] );
+
+		// Column
+		$this->add_control(
+			'column',
+			[
+				'label'   => __( 'Column', 'cnv-school-addon' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'col-lg-12' => esc_html__( '1', 'cnv-school-addon' ),
+					'col-lg-6'  => esc_html__( '2', 'cnv-school-addon' ),
+					'col-lg-4'  => esc_html__( '3', 'cnv-school-addon' ),
+					'col-lg-3'  => esc_html__( '4', 'cnv-school-addon' ),
+				],
+				'default' => 'col-lg-4',
+			]
+		);
+
+		$this->add_control(
+			'posts_per_page',
+			[
+				'label'       => esc_html__( 'Items per page', 'cnv-school-addon' ),
+				'description' => esc_html__( 'Number of items to show per page. Input "-1" to show all posts. Leave blank to use global setting.',
+					'cnv-school-addon' ),
+				'type'        => Controls_Manager::NUMBER,
+				'default'     => '6',
+				'min'         => - 1,
+				'max'         => 100,
+				'step'        => 1,
+			]
+		);
+		$this->add_control(
+			'order_by',
+			[
+				'label'       => __( 'Order by', 'cnv-school-addon' ),
+				'type'        => Controls_Manager::SELECT,
+				'options'     => [
+					'date'           => esc_html__( 'Date', 'cnv-school-addon' ),
+					'ID'             => esc_html__( 'Post ID', 'cnv-school-addon' ),
+					'author'         => esc_html__( 'Author', 'cnv-school-addon' ),
+					'title'          => esc_html__( 'Title', 'cnv-school-addon' ),
+					'modified'       => esc_html__( 'Last modified date', 'cnv-school-addon' ),
+					'parent'         => esc_html__( 'Post/page parent ID', 'cnv-school-addon' ),
+					'comment_count'  => esc_html__( 'Number of comments', 'cnv-school-addon' ),
+					'menu_order'     => esc_html__( 'Menu order/Page Order', 'cnv-school-addon' ),
+					'meta_value'     => esc_html__( 'Meta value', 'cnv-school-addon' ),
+					'meta_value_num' => esc_html__( 'Meta value number', 'cnv-school-addon' ),
+					'rand'           => esc_html__( 'Random order', 'cnv-school-addon' ),
+				],
+				'default'     => 'date',
+				'separator'   => 'before',
+				'description' => esc_html__( "Select how to sort retrieved posts. More at ",
+						'cnv-school-addon' ) . '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex</a>.',
+			]
+		);
+
+		$this->add_control(
+			'order',
+			[
+				'label'       => __( 'Sort Order', 'cnv-school-addon' ),
+				'type'        => Controls_Manager::SELECT,
+				'options'     => [
+					'ASC'  => esc_html__( 'Ascending', 'cnv-school-addon' ),
+					'DESC' => esc_html__( 'Descending', 'cnv-school-addon' ),
+				],
+				'default'     => 'DESC',
+				'separator'   => 'before',
+				'description' => esc_html__( "Select Ascending or Descending order. More at",
+						'cnv-school-addon' ) . '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex</a>.',
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
-		if ( ! $settings['wp_gallery'] ) {
-			return;
-		}
 
-		$ids = wp_list_pluck( $settings['wp_gallery'], 'id' );
+		$args = array(
+			'post_type'      => 'gallery',
+			'order'          => $settings['order'],
+			'orderby'        => $settings['order_by'],
+			'posts_per_page' => $settings['posts_per_page'],
+			'post_status'    => 'publish',
+		);
 
-		$this->add_render_attribute( 'shortcode', 'ids', implode( ',', $ids ) );
-		$this->add_render_attribute( 'shortcode', 'size', $settings['thumbnail_size'] );
-		$this->add_render_attribute( 'shortcode', 'cnv-overlay', 'cnv-overlay' );
+		$cnv_query = new \WP_Query( $args );
 
-		if ( $settings['gallery_columns'] ) {
-			$this->add_render_attribute( 'shortcode', 'columns', $settings['gallery_columns'] );
-		}
+		$this->add_render_attribute( 'wrapper', 'class', [
+			'cnv-gallery-wrapper row',
+		] );
 
-		if ( $settings['gallery_link'] ) {
-			$this->add_render_attribute( 'shortcode', 'link', $settings['gallery_link'] );
-		}
-
-		if ( ! empty( $settings['gallery_rand'] ) ) {
-			$this->add_render_attribute( 'shortcode', 'orderby', $settings['gallery_rand'] );
-		}
 		?>
-		<div class="elementor-image-gallery">
-			<?php
-			add_filter( 'wp_get_attachment_link', [ $this, 'add_lightbox_data_to_image_link' ], 10, 2 );
 
-			echo do_shortcode( '[gallery ' . $this->get_render_attribute_string( 'shortcode' ) . ']' );
 
-			remove_filter( 'wp_get_attachment_link', [ $this, 'add_lightbox_data_to_image_link' ] );
-			?>
-		</div>
+        <div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
+
+			<?php if ( $cnv_query->have_posts() ) : ?>
+
+				<?php while ( $cnv_query->have_posts() ) : $cnv_query->the_post(); ?>
+                    <div class="<?php echo esc_attr( $settings['column'] ) ?> col-md-6 col-sm-6">
+                        <div class="cnv-gallery">
+                            <div class="cnv-gallery__img">
+                                <a href="<?php the_permalink(); ?>">
+									<?php the_post_thumbnail( 'medium' ); ?>
+                                </a>
+                            </div>
+
+                          <div class="cnv-gallery__content">
+                              <h3 class="cnv-gallery__title">
+                                  <a href="<?php echo esc_url( the_permalink() ); ?>"><?php the_title(); ?></a>
+                              </h3>
+                          </div>
+                        </div>
+                    </div>
+				<?php endwhile; ?>
+				<?php wp_reset_postdata(); ?>
+			<?php else : ?>
+                <p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'cnv-school-addon' ); ?></p>
+
+			<?php endif; ?>
+        </div>
 		<?php
+
 	}
+
 }

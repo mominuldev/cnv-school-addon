@@ -76,8 +76,20 @@ class Banner extends Widget_Base {
 			]
 		);
 
-		$repeater = new Repeater();
+        // Show Slider Content
+		$this->add_control(
+			'show_slider_content',
+			[
+				'label'        => __( 'Show Slider Content', 'cnv-school-addon' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'cnv-school-addon' ),
+				'label_off'    => __( 'Hide', 'cnv-school-addon' ),
+				'return_value' => 'yes',
+				'default'      => 'no'
+			]
+		);
 
+		$repeater = new Repeater();
 
 		$repeater->add_control(
 			'banner_title', [
@@ -794,7 +806,7 @@ class Banner extends Widget_Base {
 		<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
 
 			<?php if ( $settings['navigation'] == 'yes' ): ?>
-				<div class="banner__slider-prev"><i class="feather-chevron-left"></i></div>
+				<div class="banner__slider-prev"><i class="fa-solid fa-chevron-left"></i></div>
 			<?php endif; ?>
 
 			<div class="swiper-wrapper">
@@ -802,43 +814,44 @@ class Banner extends Widget_Base {
 					<div class="swiper-slide">
 						<div class="banner__slide">
 							<div class="banner__image">
-								<img src="<?php echo esc_url( $item['banner_image']['url'] ); ?>"
-									 alt="<?php echo esc_attr( $item['banner_title'] ); ?>">
+								<img src="<?php echo esc_url( $item['banner_image']['url'] ); ?>" alt="<?php echo esc_attr( $item['banner_title'] ); ?>">
 							</div>
 
-							<div class="banner__content text-center">
-								<?php if ( ! empty( $item['banner_title'] ) ) : ?>
-									<h1 class="banner__title"><?php echo $item['banner_title']; ?></h1>
-								<?php endif; ?>
+                            <?php if( 'yes' == $settings['show_slider_content'] ) : ?>
+                                <div class="banner__content text-center">
+                                    <?php if ( ! empty( $item['banner_title'] ) ) : ?>
+                                        <h1 class="banner__title"><?php echo $item['banner_title']; ?></h1>
+                                    <?php endif; ?>
 
-								<?php if ( ! empty( $item['banner_description'] ) ) : ?>
-									<div class="banner__description"><?php echo $item['banner_description']; ?></div>
-								<?php endif; ?>
+                                    <?php if ( ! empty( $item['banner_description'] ) ) : ?>
+                                        <div class="banner__description"><?php echo $item['banner_description']; ?></div>
+                                    <?php endif; ?>
 
-								<div class="banner__button-container">
+                                    <div class="banner__button-container">
 
-									<?php
-									// Button One
-									$target   = $item['btn_link_one']['is_external'] ? ' target="_blank"' : '';
-									$nofollow = $item['btn_link_one']['nofollow'] ? ' rel="nofollow"' : '';
-									?>
+                                        <?php
+                                        // Button One
+                                        $target   = $item['btn_link_one']['is_external'] ? ' target="_blank"' : '';
+                                        $nofollow = $item['btn_link_one']['nofollow'] ? ' rel="nofollow"' : '';
+                                        ?>
 
-									<?php if ( ! empty( $item['btn_text_one'] ) ) : ?>
-										<a href="<?php echo esc_url( $item['btn_link_one']['url'] ) ?>" <?php echo esc_attr( $target . ' ' . $nofollow ) ?>
-										   class="cnv-btn banner-btn"><?php echo esc_html( $item['btn_text_one'] ); ?></a>
-									<?php endif; ?>
-								</div>
-								<!-- /.banner__button-container -->
-							</div>
-							<!-- /.banner__content -->
-						</div>
+                                        <?php if ( ! empty( $item['btn_text_one'] ) ) : ?>
+                                            <a href="<?php echo esc_url( $item['btn_link_one']['url'] ) ?>" <?php echo esc_attr( $target . ' ' . $nofollow ) ?>
+                                               class="cnv-btn banner-btn"><?php echo esc_html( $item['btn_text_one'] ); ?></a>
+                                        <?php endif; ?>
+                                    </div>
+                                    <!-- /.banner__button-container -->
+                                </div>
+                                <!-- /.banner__content -->
+                            <?php endif; ?>
+                        </div>
 						<!-- /.banner__slide -->
 					</div>
 				<?php endforeach; ?>
 			</div>
 
 			<?php if ( $settings['navigation'] == 'yes' ): ?>
-				<div class="banner__slider-next"><i class="feather-chevron-right"></i></div>
+				<div class="banner__slider-next"><i class="fa-solid fa-chevron-right"></i></div>
 			<?php endif; ?>
 
 			<?php if ( $settings['navigation'] == 'yes' ): ?>

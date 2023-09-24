@@ -29,7 +29,7 @@ class ServiceList extends Widget_Base {
 	 * @access public
 	 */
 	public function get_name() {
-		return 'rbt-service-list';
+		return 'cnv-service-list';
 	}
 
 	/**
@@ -217,7 +217,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Text Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__title' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__title' => 'color: {{VALUE}};',
 			],
 		] );
 
@@ -225,7 +225,7 @@ class ServiceList extends Widget_Base {
 		$this->add_group_control( Group_Control_Typography::get_type(), [
 			'name'     => 'title_typography',
 			'label'    => __( 'Typography', 'cnv-school-addon' ),
-			'selector' => '{{WRAPPER}} .rbt-service-list__title',
+			'selector' => '{{WRAPPER}} .cnv-service-list__title',
 		] );
 
 
@@ -247,7 +247,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__arrow svg path' => 'fill: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__arrow svg path' => 'fill: {{VALUE}};',
 			],
 		] );
 
@@ -267,7 +267,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__btn' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__btn' => 'color: {{VALUE}};',
 			],
 		] );
 
@@ -276,7 +276,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Hover Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__btn:hover' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__btn:hover' => 'color: {{VALUE}};',
 			],
 		] );
 
@@ -285,7 +285,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Background Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__btn' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__btn' => 'background-color: {{VALUE}};',
 			],
 		] );
 
@@ -294,14 +294,14 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Hover Background Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__btn:hover' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__btn:hover' => 'background-color: {{VALUE}};',
 			],
 		] );
 
 		$this->add_group_control( Group_Control_Typography::get_type(), [
 			'name'     => 'position_typography',
 			'label'    => __( 'Typography', 'cnv-school-addon' ),
-			'selector' => '{{WRAPPER}} .rbt-service-list__btn',
+			'selector' => '{{WRAPPER}} .cnv-service-list__btn',
 		] );
 
 		// Height and Width
@@ -320,7 +320,7 @@ class ServiceList extends Widget_Base {
 				],
 			],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-service-list__btn' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list__btn' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
 			],
 		] );
 
@@ -338,7 +338,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__icon' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__icon' => 'color: {{VALUE}};',
 			],
 		] );
 
@@ -347,7 +347,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Hover Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__icon:hover' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__icon:hover' => 'color: {{VALUE}};',
 			],
 		] );
 
@@ -356,7 +356,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Background Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__icon' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__icon' => 'background-color: {{VALUE}};',
 			],
 		] );
 
@@ -365,7 +365,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Hover Background Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__icon:hover' => 'background-color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list__icon:hover' => 'background-color: {{VALUE}};',
 			],
 		] );
 
@@ -385,7 +385,7 @@ class ServiceList extends Widget_Base {
 				],
 			],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-service-list__icon' => 'font-size: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list__icon' => 'font-size: {{SIZE}}{{UNIT}};',
 			],
 		] );
 
@@ -395,7 +395,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Padding', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::SLIDER,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__icon' => 'padding: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list__icon' => 'padding: {{SIZE}}{{UNIT}};',
 			],
 		] );
 
@@ -404,7 +404,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Space Between Icon and Title', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::SLIDER,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list__icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list__icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 			],
 		] );
 
@@ -414,7 +414,7 @@ class ServiceList extends Widget_Base {
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => [ 'px', 'em', '%' ],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-service-list__icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list__icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			],
 		] );
 
@@ -435,7 +435,7 @@ class ServiceList extends Widget_Base {
 				'name'     => 'service_background',
 				'label'    => __( 'Background Color', 'cnv-school-addon' ),
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .rbt-service-list:not(.rbt-service-list--two)',
+				'selector' => '{{WRAPPER}} .cnv-service-list:not(.cnv-service-list--two)',
 				'condition' => [
 					'layout' => 'one',
 				]
@@ -449,7 +449,7 @@ class ServiceList extends Widget_Base {
 				'name'     => 'service_two_background',
 				'label'    => __( 'Background Color', 'cnv-school-addon' ),
 				'types'    => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .rbt-service-list:not(.rbt-service-list--one)',
+				'selector' => '{{WRAPPER}} .cnv-service-list:not(.cnv-service-list--one)',
 				'condition' => [
 					'layout' => 'two',
 				]
@@ -463,7 +463,7 @@ class ServiceList extends Widget_Base {
 			[
 				'name'     => 'service_border',
 				'label'    => __( 'Border', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-service-list:not(:hover)',
+				'selector' => '{{WRAPPER}} .cnv-service-list:not(:hover)',
 			]
 		);
 
@@ -472,7 +472,7 @@ class ServiceList extends Widget_Base {
 			'label'     => __( 'Hover Border Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-service-list:hover' => 'border-color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-service-list:hover' => 'border-color: {{VALUE}};',
 			],
 		] );
 
@@ -481,7 +481,7 @@ class ServiceList extends Widget_Base {
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => [ 'px', '%', 'em' ],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-service-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			],
 		] );
 
@@ -491,7 +491,7 @@ class ServiceList extends Widget_Base {
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => [ 'px', '%', 'em' ],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-service-list' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-service-list' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			],
 		] );
 
@@ -501,7 +501,7 @@ class ServiceList extends Widget_Base {
 			[
 				'name'     => 'service_box_shadow',
 				'label'    => __( 'Box Shadow', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-service-list',
+				'selector' => '{{WRAPPER}} .cnv-service-list',
 			]
 		);
 
@@ -511,7 +511,7 @@ class ServiceList extends Widget_Base {
 			[
 				'name'     => 'service_hover_box_shadow',
 				'label'    => __( 'Hover Box Shadow', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-service-list:hover',
+				'selector' => '{{WRAPPER}} .cnv-service-list:hover',
 			]
 		);
 
@@ -526,11 +526,11 @@ class ServiceList extends Widget_Base {
 		$count = 0;
 
 		// Wrapper attributes
-		$this->add_render_attribute( 'wrapper', 'class', 'rbt-service-list wow fadeInUp' );
+		$this->add_render_attribute( 'wrapper', 'class', 'cnv-service-list wow fadeInUp' );
 		$this->add_render_attribute( 'wrapper', 'data-wow-delay', $ant . 's' );
 
 		// Style
-		$this->add_render_attribute( 'wrapper', 'class', 'rbt-service-list--' . $settings['layout'] );
+		$this->add_render_attribute( 'wrapper', 'class', 'cnv-service-list--' . $settings['layout'] );
 
 		if ( ! empty( $settings['service_lists'] ) ) {
 //			$ant = 0.3;

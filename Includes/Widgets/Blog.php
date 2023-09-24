@@ -89,16 +89,7 @@ class Blog extends Widget_Base {
 			'default'     => '0'
 		] );
 
-		$this->add_control( 'content_length', [
-			'label'   => __( 'Word Limit', 'cnv-school-addon' ),
-			'type'    => \Elementor\Controls_Manager::NUMBER,
-			'min'     => 5,
-			'max'     => 30,
-			'step'    => 1,
-			'default' => 15,
-		] );
-
-		$this->add_control( 'readmore', [
+		$this->add_control( 'read_more_text', [
 			'label'       => __( 'Read More Button text' ),
 			'type'        => Controls_Manager::TEXT,
 			'placeholder' => __( 'Enter button text here' ),

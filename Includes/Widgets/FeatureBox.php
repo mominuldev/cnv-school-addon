@@ -29,7 +29,7 @@ class FeatureBox extends Widget_Base {
 	 * @access public
 	 */
 	public function get_name() {
-		return 'rbt-feature-box';
+		return 'cnv-feature-box';
 	}
 
 	/**
@@ -172,7 +172,7 @@ class FeatureBox extends Widget_Base {
 			'label'     => __( 'Text Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-feature-box__title' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-feature-box__title' => 'color: {{VALUE}};',
 			],
 		] );
 
@@ -180,7 +180,7 @@ class FeatureBox extends Widget_Base {
 		$this->add_group_control( Group_Control_Typography::get_type(), [
 			'name'     => 'title_typography',
 			'label'    => __( 'Typography', 'cnv-school-addon' ),
-			'selector' => '{{WRAPPER}} .rbt-feature-box__title',
+			'selector' => '{{WRAPPER}} .cnv-feature-box__title',
 		] );
 
 
@@ -204,7 +204,7 @@ class FeatureBox extends Widget_Base {
 				'name'      => 'feature_background',
 				'label'     => __( 'Background Color', 'cnv-school-addon' ),
 				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .rbt-feature-box',
+				'selector'  => '{{WRAPPER}} .cnv-feature-box',
 			]
 		);
 
@@ -214,7 +214,7 @@ class FeatureBox extends Widget_Base {
 			[
 				'name'     => 'feature_border',
 				'label'    => __( 'Border', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-feature-box:not(:hover)',
+				'selector' => '{{WRAPPER}} .cnv-feature-box:not(:hover)',
 			]
 		);
 
@@ -223,7 +223,7 @@ class FeatureBox extends Widget_Base {
 			'label'     => __( 'Hover Border Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-feature-box:hover' => 'border-color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-feature-box:hover' => 'border-color: {{VALUE}};',
 			],
 		] );
 
@@ -232,7 +232,7 @@ class FeatureBox extends Widget_Base {
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => [ 'px', '%', 'em' ],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-feature-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-feature-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			],
 		] );
 
@@ -242,7 +242,7 @@ class FeatureBox extends Widget_Base {
 			'type'       => Controls_Manager::DIMENSIONS,
 			'size_units' => [ 'px', '%', 'em' ],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-feature-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				'{{WRAPPER}} .cnv-feature-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 			],
 		] );
 
@@ -252,7 +252,7 @@ class FeatureBox extends Widget_Base {
 			[
 				'name'     => 'feature_box_shadow',
 				'label'    => __( 'Box Shadow', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-feature-box',
+				'selector' => '{{WRAPPER}} .cnv-feature-box',
 			]
 		);
 
@@ -262,7 +262,7 @@ class FeatureBox extends Widget_Base {
 			[
 				'name'     => 'feature_hover_box_shadow',
 				'label'    => __( 'Hover Box Shadow', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-feature-box:hover',
+				'selector' => '{{WRAPPER}} .cnv-feature-box:hover',
 			]
 		);
 
@@ -277,7 +277,7 @@ class FeatureBox extends Widget_Base {
 		$count = 0;
 
 		// Wrapper attributes
-		$this->add_render_attribute( 'wrapper', 'class', 'rbt-feature-box wow fadeInUp' );
+		$this->add_render_attribute( 'wrapper', 'class', 'cnv-feature-box wow fadeInUp' );
 		$this->add_render_attribute( 'wrapper', 'data-wow-delay', $ant . 's' );
 
 		echo '<div class="row">';

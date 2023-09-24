@@ -34,7 +34,7 @@ class CounterList extends Widget_Base {
 	 *
 	 */
 	public function get_name() {
-		return 'rbt-counter-list';
+		return 'cnv-counter-list';
 	}
 
 	/**
@@ -48,7 +48,7 @@ class CounterList extends Widget_Base {
 	 *
 	 */
 	public function get_title() {
-		return __( 'Gotex Counter List', 'cnv-school-addon' );
+		return __( 'CNV Counter List', 'cnv-school-addon' );
 	}
 
 	/**
@@ -276,9 +276,9 @@ class CounterList extends Widget_Base {
 						'value'   => 'fas fa-star',
 						'library' => 'solid',
 					],
-					'count_number'     => __( '20', 'cnv-school-addon' ),
-					'suffix_after'     => 'k',
-					'count_title'      => __( 'Project Completed', 'cnv-school-addon' ),
+					'count_number'     => __( '5', 'cnv-school-addon' ),
+					'suffix_after'     => '+',
+					'count_title'      => __( 'Classes', 'cnv-school-addon' ),
 				],
 				[
 					'icon_type'        => 'icon',
@@ -286,9 +286,9 @@ class CounterList extends Widget_Base {
 						'value'   => 'fas fa-star',
 						'library' => 'solid',
 					],
-					'count_number'     => __( '8', 'cnv-school-addon' ),
-					'suffix_after'     => 'k',
-					'count_title'      => __( 'Team Member', 'cnv-school-addon' ),
+					'count_number'     => __( '1762', 'cnv-school-addon' ),
+					'suffix_after'     => '+',
+					'count_title'      => __( 'Students', 'cnv-school-addon' ),
 				],
 				[
 					'icon_type'        => 'icon',
@@ -297,8 +297,8 @@ class CounterList extends Widget_Base {
 						'library' => 'solid',
 					],
 					'suffix_after'     => '+',
-					'count_number'     => __( '500', 'cnv-school-addon' ),
-					'count_title'      => __( 'Awards Winning', 'cnv-school-addon' ),
+					'count_number'     => __( '21', 'cnv-school-addon' ),
+					'count_title'      => __( 'Teachers', 'cnv-school-addon' ),
 				],
 				[
 					'icon_type'        => 'icon',
@@ -307,8 +307,8 @@ class CounterList extends Widget_Base {
 						'library' => 'solid',
 					],
 					'suffix_after'     => '+',
-					'count_number'     => __( '40', 'cnv-school-addon' ),
-					'count_title'      => __( 'Happy Customer', 'cnv-school-addon' ),
+					'count_number'     => __( '6', 'cnv-school-addon' ),
+					'count_title'      => __( 'Staffs', 'cnv-school-addon' ),
 				],
 			],
 			'title_field' => '{{{ count_title }}}',
@@ -443,14 +443,14 @@ class CounterList extends Widget_Base {
 			'label'     => esc_html__( 'Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-counter__number' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-counter__number' => 'color: {{VALUE}};',
 			],
 		] );
 
 		$this->add_group_control( Group_Control_Typography::get_type(), [
 			'name'     => 'counter_typography',
 			'label'    => __( 'Typography', 'cnv-school-addon' ),
-			'selector' => '{{WRAPPER}} .rbt-counter__number',
+			'selector' => '{{WRAPPER}} .cnv-counter__number',
 		] );
 
 		$this->end_controls_section();
@@ -467,14 +467,14 @@ class CounterList extends Widget_Base {
 			'label'     => esc_html__( 'Color', 'cnv-school-addon' ),
 			'type'      => Controls_Manager::COLOR,
 			'selectors' => [
-				'{{WRAPPER}} .rbt-counter__title' => 'color: {{VALUE}};',
+				'{{WRAPPER}} .cnv-counter__title' => 'color: {{VALUE}};',
 			],
 		] );
 
 		$this->add_group_control( Group_Control_Typography::get_type(), [
 			'name'     => 'counter_title_typography',
 			'label'    => __( 'Title Typography', 'cnv-school-addon' ),
-			'selector' => '{{WRAPPER}} .rbt-counter__title',
+			'selector' => '{{WRAPPER}} .cnv-counter__title',
 		] );
 
 		$this->add_control(
@@ -491,7 +491,7 @@ class CounterList extends Widget_Base {
 				],
 
 				'selectors' => [
-					'{{WRAPPER}} .rbt-counter__number' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-counter__number' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -511,7 +511,7 @@ class CounterList extends Widget_Base {
 				'name'     => 'background',
 				'label'    => __( 'Background', 'cnv-school-addon' ),
 				'types'    => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .rbt-counter',
+				'selector' => '{{WRAPPER}} .cnv-counter',
 			]
 		);
 
@@ -520,7 +520,7 @@ class CounterList extends Widget_Base {
 			[
 				'name'     => 'border',
 				'label'    => __( 'Border', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-counter',
+				'selector' => '{{WRAPPER}} .cnv-counter',
 			]
 		);
 
@@ -531,7 +531,7 @@ class CounterList extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-counter' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-counter' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -541,7 +541,7 @@ class CounterList extends Widget_Base {
 			[
 				'name'     => 'box_shadow',
 				'label'    => __( 'Box Shadow', 'cnv-school-addon' ),
-				'selector' => '{{WRAPPER}} .rbt-counter',
+				'selector' => '{{WRAPPER}} .cnv-counter',
 			]
 		);
 
@@ -552,7 +552,7 @@ class CounterList extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
-					'{{WRAPPER}} .rbt-counter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .cnv-counter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -569,7 +569,7 @@ class CounterList extends Widget_Base {
 				],
 			],
 			'selectors'  => [
-				'{{WRAPPER}} .rbt-counter:hover' => 'transform: translateY({{SIZE}}{{UNIT}});',
+				'{{WRAPPER}} .cnv-counter:hover' => 'transform: translateY({{SIZE}}{{UNIT}});',
 			],
 		] );
 
@@ -633,21 +633,21 @@ class CounterList extends Widget_Base {
 		echo '<div class="row justify-content-center">';
 		foreach ( $counerLists as $item ) : ?>
 			<div class="col-sm-6 col-md-4 col-xl-<?php echo esc_attr($settings['column']); ?>">
-			<div class="rbt-counter">
+			<div class="cnv-counter">
 				<?php if ( ! empty( $item['icon_type'] == 'icon' ) ) : ?>
 					<?php if ( $item['icon_pack'] == 'fontawesome' ) : ?>
-						<div class="rbt-counter__icon-container">
+						<div class="cnv-counter__icon-container">
 							<?php \Elementor\Icons_Manager::render_icon( $item['selected_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 						</div>
 						<!-- /.icon-container -->
 					<?php elseif ( $item['icon_pack'] == 'feather' ) : ?>
-						<div class="rbt-counter__icon-container">
+						<div class="cnv-counter__icon-container">
 							<?php if ( ! empty( $item['feather_icon'] ) ) : ?>
 								<i class="<?php echo esc_attr( $item['feather_icon'] ) ?>"></i>
 							<?php endif; ?>
 						</div>
 					<?php elseif ( $item['icon_pack'] == 'simpleline' ) : ?>
-						<div class="rbt-counter__icon-container">
+						<div class="cnv-counter__icon-container">
 							<?php if ( ! empty( $item['simpleline_icon'] ) ) : ?>
 								<i class="<?php echo esc_attr( $item['simpleline_icon'] ) ?>"></i>
 							<?php endif; ?>
@@ -656,15 +656,15 @@ class CounterList extends Widget_Base {
 					<?php endif; ?>
 
 				<?php elseif ( ! empty( $item['icon_type'] == 'image' ) ) : ?>
-					<div class="rbt-counter__icon-container">
+					<div class="cnv-counter__icon-container">
 						<img src="<?php echo esc_url( $item['icon_image']['url'] ); ?>" alt="<?php echo esc_attr( $item['count_title'] ); ?>">
 					</div>
 					<!-- /.icon-container -->
 				<?php endif; ?>
 
-				<div class="rbt-counter__content">
+				<div class="cnv-counter__content">
 					<?php if ( ! empty( $item['count_number'] ) ) : ?>
-						<div class="rbt-counter__number">
+						<div class="cnv-counter__number">
 							<?php if ( ! empty( $item['suffix_before'] ) ): ?>
 								<span class="suffix"><?php echo $item['suffix_before']; ?></span>
 							<?php endif; ?>
@@ -679,7 +679,7 @@ class CounterList extends Widget_Base {
 					<?php endif; ?>
 
 					<?php if ( ! empty( $item['count_title'] ) ) : ?>
-						<p class="rbt-counter__title"><?php echo $item['count_title']; ?></p>
+						<p class="cnv-counter__title"><?php echo $item['count_title']; ?></p>
 					<?php endif; ?>
 				</div>
 			</div>

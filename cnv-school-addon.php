@@ -10,6 +10,7 @@
  */
 
 use CodeNestVentures\SchoolAddon\Admin\PostType\Gallery;
+use CodeNestVentures\SchoolAddon\Admin\PostType\Notice;
 use CodeNestVentures\SchoolAddon\DemoImport;
 
 if (!defined('ABSPATH'))
@@ -201,8 +202,8 @@ if (!class_exists('CNV_School_Addon')) {
 
 			// Admin
 			new CodeNestVentures\SchoolAddon\Admin();
-			new DemoImport();
 			new Gallery();
+			new Notice();
 
 			// Elementor Widgets
 			CodeNestVentures\SchoolAddon\ElementorWidgets::get_instance();
