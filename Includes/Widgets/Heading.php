@@ -221,6 +221,7 @@ class Heading extends Widget_Base {
 			'selectors' => [
 				'{{WRAPPER}} .section-heading' => 'text-align: {{VALUE}};'
 			],
+            'prefix_class' => 'cnv-heading-align-'
 		] );
 
 		$this->add_responsive_control( 'heading_spacing_div', [

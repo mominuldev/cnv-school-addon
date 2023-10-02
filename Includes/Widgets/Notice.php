@@ -223,6 +223,16 @@ class Notice extends Widget_Base {
 		$this->add_render_attribute( 'wrapper', 'class', [
 			'cnv-notice__list-wrapper',
 		] );
+
+		if ( ! empty( $settings['notice_btn_link']['url'] ) ) {
+			$this->add_link_attributes( 'notice_btn_link', $settings['notice_btn_link'] );
+		}
+
+        // Class add in btn
+        $this->add_render_attribute( 'notice_btn_link', 'class', [
+            'cnv-btn', 'btn-full'
+        ] );
+
         ?>
 
 		<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
@@ -239,6 +249,10 @@ class Notice extends Widget_Base {
                     else : ?>
                     <p><?php esc_html_e( 'Sorry, no notices matched your criteria.', 'cnv-school-addon' ); ?></p>
                 <?php endif; ?>
+            </div>
+
+            <div class="cnv-notice__button">
+                <a <?php echo $this->get_render_attribute_string( 'notice_btn_link' ); ?>><?php echo esc_html($settings['notice_btn_text']) ?></a>
             </div>
 		</div>
 		<?php

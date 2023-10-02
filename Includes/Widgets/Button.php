@@ -171,6 +171,7 @@ class Button extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'btn-dark',
 				'options' => [
+					'btn-default' => __( 'Default', 'cnv-school-addon' ),
 					'btn-light' => __( 'Light', 'cnv-school-addon' ),
 					'btn-dark' => __( 'Dark', 'cnv-school-addon' ),
 				],
