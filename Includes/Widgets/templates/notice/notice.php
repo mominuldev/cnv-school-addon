@@ -9,7 +9,7 @@
     </h3>
 
     <div class="notice-list__file">
-        <a href="<?php  echo esc_url( $notice_file['notice_file']['url'] ); ?>" target="_blank" class="notice-list__download-btn">
+        <a href="<?php  echo esc_url( $notice_file['notice_file']['url'] ); ?>" target="_blank" class="notice-list__download-btn cnv-btn">
             <i class="fa-solid fa-download"></i>
             <span class="notice-list__text">ডাউনলোড</span>
         </a>
